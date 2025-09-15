@@ -4,7 +4,7 @@ import useGetKpiStats from "@/hooks/stats/useGetKpiStats";
 import KpiSkeleton from "@/components/dashboard/kpis/KpiSkeleton";
 import ErrorBox from "@/components/dashboard/ErrorBox";
 
-const DashboardContentKpis = () => {
+const KpisBox = () => {
 
     const {
         isPending,
@@ -44,4 +44,4 @@ const DashboardContentKpis = () => {
     );
 };
 
-export default DashboardContentKpis;
+export default KpisBox;
