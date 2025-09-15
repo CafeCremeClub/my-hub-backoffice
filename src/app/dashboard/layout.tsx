@@ -29,8 +29,10 @@ const DashboardLayout = ({children}: DashboardLayoutProps) => {
                     <div className="md:inline hidden">
                         <Sidebar/>
                     </div>
-                    <main className="p-8 min-h-screen overflow-y-auto w-full scroll-hidden mt-3 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
-                        {children}
+                    <main className="min-h-screen overflow-y-auto w-full scroll-hidden pt-3">
+                        <div className="h-full p-8 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
+                            {children}
+                        </div>
                     </main>
                 </div>
             </div>
