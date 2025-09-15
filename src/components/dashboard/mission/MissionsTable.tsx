@@ -14,14 +14,15 @@ import CustomInput from "@/components/custom/CustomInput";
 import {useDebounce} from "@/hooks/useDebounce";
 import UpdateMissionStatusDialog from "@/components/dashboard/mission/UpdateMissionStatusDialog";
 import {Mission} from "@/types/mission/Mission";
+import DeleteMissionAlertDialog from "@/components/dashboard/mission/DeleteMissionAlertDialog";
 
 const DashboardContentMissionsTable = () => {
 
     const [search, setSearch] = useState<string>("");
     const [page, setPage] = useState<number>(1);
-    // Update status state
-    const [isUpdateStatusDialogOpen, setIsUpdateStatusDialogOpen] = useState<boolean>(false);
     const [currentMission, setCurrentMission] = useState<Mission | null>(null);
+    const [isUpdateStatusDialogOpen, setIsUpdateStatusDialogOpen] = useState<boolean>(false);
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false);
 
 
     // Debounce search input to avoid too many requests
@@ -48,7 +49,22 @@ const DashboardContentMissionsTable = () => {
                 currentMission !== null ?
                     <UpdateMissionStatusDialog
                         isOpen={isUpdateStatusDialogOpen}
-                        onClose={() => setIsUpdateStatusDialogOpen(false)}
+                        onClose={() => {
+                            setIsUpdateStatusDialogOpen(false)
+                            setCurrentMission(null);
+                        }}
+                        mission={currentMission}
+                    /> : null
+            }
+
+            {
+                currentMission !== null ?
+                    <DeleteMissionAlertDialog
+                        isOpen={isDeleteDialogOpen}
+                        onClose={() => {
+                            setIsDeleteDialogOpen(false)
+                            setCurrentMission(null);
+                        }}
                         mission={currentMission}
                     /> : null
             }
@@ -127,6 +143,13 @@ const DashboardContentMissionsTable = () => {
                                                         <div className="flex items-center justify-center gap-2">
                                                             <CustomButton
                                                                 className="size-10 bg-white border-white hover:bg-gray-100 shadow-none"
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    e.preventDefault();
+
+                                                                    setCurrentMission(mission);
+                                                                    setIsDeleteDialogOpen(true);
+                                                                }}
                                                             >
                                                                 <Trash2 className="flex-none text-[#94969C]"/>
                                                             </CustomButton>

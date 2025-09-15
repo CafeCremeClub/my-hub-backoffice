@@ -29,3 +29,11 @@ export const updateMissionStatus = async (payload: UpdateMissionStatusPayload): 
         throw error;
     }
 }
+
+export const deleteMission = async (missionId: string): Promise<void> => {
+    try {
+        await axiosInstance.delete(`/missions/${missionId}`);
+    } catch (error) {
+        throw error;
+    }
+}
