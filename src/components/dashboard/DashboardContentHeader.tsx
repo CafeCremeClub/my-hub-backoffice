@@ -8,7 +8,7 @@ const DashboardContentHeader = () => {
 
     const {isPending, data} = useGetMe();
     return (
-        <div className="flex justify-between gap-3">
+        <div className="flex lg:flex-row flex-col lg:justify-between gap-3">
             <div className="flex flex-col gap-1">
                 <div className="font-semibold tracking-tighter text-4xl text-[#1734B6] bricolage-grotesque">
                     {
