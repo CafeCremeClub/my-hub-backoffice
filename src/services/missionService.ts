@@ -1,6 +1,7 @@
 import {GetMissionsResponse} from "@/types/mission/GetMissionsResponse";
 import {GetMissionsParams} from "@/types/mission/GetMissionsParams";
 import axiosInstance from "@/config/axiosInstance";
+import {UpdateMissionStatusPayload} from "@/types/mission/UpdateMissionStatusPayload";
 
 
 export const getMissions = async (params?: GetMissionsParams): Promise<GetMissionsResponse> => {
@@ -14,6 +15,16 @@ export const getMissions = async (params?: GetMissionsParams): Promise<GetMissio
 
         const response = await axiosInstance.get<GetMissionsResponse>(url);
         return response.data
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const updateMissionStatus = async (payload: UpdateMissionStatusPayload): Promise<void> => {
+    try {
+        await axiosInstance.patch<void>(`/missions/update/${payload.id}`, {
+            status: payload.status,
+        })
     } catch (error) {
         throw error;
     }
