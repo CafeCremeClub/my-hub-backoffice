@@ -102,7 +102,8 @@ const Sidebar = ({
                 <Image
                     src={lightBlueLogo}
                     alt="logo"
-                    className="object-center object-cover w-64"
+                    className="object-center object-cover w-64 cursor-pointer"
+                    onClick={() => onRoutePress("/dashboard")}
                 />
                 <div className="flex flex-col gap-2 h-full">
                     {
