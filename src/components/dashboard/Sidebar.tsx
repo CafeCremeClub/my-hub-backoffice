@@ -72,9 +72,25 @@ const Sidebar = ({
     }
 
     useEffect(() => {
-        const currentRoute = routes.find(route => route.route === pathname);
-        if (currentRoute) {
-            setSelectedRoute(currentRoute.route);
+        // Handle root route specially
+        if (pathname === "/" || pathname === "/dashboard") {
+            setSelectedRoute(routes[0].route);
+            return;
+        }
+
+        // Find the route that best matches the current pathname
+        // Sort routes by route length (descending) to prioritize longer, more specific routes
+        const sortedRoutes = [...routes].sort((a, b) => b.route.length - a.route.length);
+
+        const matchingRoute = sortedRoutes.find(route => {
+            if (route.route === "/") {
+                return pathname === "/" || pathname === "/dashboard";
+            }
+            return pathname.startsWith(route.route);
+        });
+
+        if (matchingRoute) {
+            setSelectedRoute(matchingRoute.route);
         } else {
             setSelectedRoute(routes[0].route);
         }
