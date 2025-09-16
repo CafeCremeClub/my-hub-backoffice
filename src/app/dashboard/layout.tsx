@@ -25,12 +25,12 @@ const DashboardLayout = ({children}: DashboardLayoutProps) => {
                         <Menu className="size-4"/>
                     </CustomButton>
                 </div>
-                <div className="flex flex-1 h-full overflow-y-auto">
+                <div className="flex flex-1 h-full overflow-y-hidden">
                     <div className="md:inline hidden">
                         <Sidebar/>
                     </div>
                     <main className="min-h-screen overflow-y-auto w-full scroll-hidden pt-3">
-                        <div className="h-full p-8 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
+                        <div className="p-8 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
                             {children}
                         </div>
                     </main>

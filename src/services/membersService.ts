@@ -1,6 +1,7 @@
 import {GetMembersParams} from "@/types/members/GetMembersParams";
 import {GetMembersResponse} from "@/types/members/GetMembersResponse";
 import axiosInstance from "@/config/axiosInstance";
+import {Member} from "@/types/members/Member";
 
 
 export const getAllMembers = async (params?: GetMembersParams): Promise<GetMembersResponse> => {
@@ -15,6 +16,15 @@ export const getAllMembers = async (params?: GetMembersParams): Promise<GetMembe
         const response = await axiosInstance.get<GetMembersResponse>(url);
         return response.data
 
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const getMemberById = async (id: string): Promise<Member> => {
+    try {
+        const response = await axiosInstance.get<Member>(`/profiles/admin/${id}`);
+        return response.data;
     } catch (error) {
         throw error;
     }

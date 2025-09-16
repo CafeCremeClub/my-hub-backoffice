@@ -12,9 +12,9 @@ export interface Member {
     profession: string;
     tjm: string;
     expertise: string;
-    industry: Industry[],
-    desiredJobs: Job[],
-    skills: Skill[]
+    industry: Industry[];
+    desiredJobs: Job[];
+    skills: Skill[] | null;
     cv: string;
     linkedIn: string;
     whatsApp: string;

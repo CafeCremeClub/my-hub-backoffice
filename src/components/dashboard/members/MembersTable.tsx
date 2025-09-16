@@ -8,11 +8,14 @@ import ErrorBox from "@/components/dashboard/ErrorBox";
 import {Badge} from "@/components/ui/badge";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import NoDataBox from "@/components/dashboard/NoDataBox";
+import {useRouter} from "next/navigation";
 
 const MembersTable = () => {
 
     const [page, setPage] = useState(1);
 
+
+    const router = useRouter();
     const {isPending, isError, data: members} = useGetAllMembers({
         page
     });
@@ -79,6 +82,7 @@ const MembersTable = () => {
                                     className={`h-[4.5rem] cursor-pointer ${
                                         index < members.data.length - 1 ? "!border-b border-b-[#EAECF0]" : ""
                                     }`}
+                                    onClick={() => router.push(`/dashboard/members/${member.id}`)}
                                 >
                                     <TableCell
                                         className="font-medium text-[#101828] text-sm">
