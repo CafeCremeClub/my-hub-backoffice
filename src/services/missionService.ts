@@ -2,6 +2,7 @@ import {GetMissionsResponse} from "@/types/mission/GetMissionsResponse";
 import {GetMissionsParams} from "@/types/mission/GetMissionsParams";
 import axiosInstance from "@/config/axiosInstance";
 import {UpdateMissionStatusPayload} from "@/types/mission/UpdateMissionStatusPayload";
+import {CreateMissionPayload} from "@/types/mission/CreateMissionPayload";
 
 
 export const getMissions = async (params?: GetMissionsParams): Promise<GetMissionsResponse> => {
@@ -15,6 +16,14 @@ export const getMissions = async (params?: GetMissionsParams): Promise<GetMissio
 
         const response = await axiosInstance.get<GetMissionsResponse>(url);
         return response.data
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const createMission = async (payload: CreateMissionPayload): Promise<void> => {
+    try {
+        await axiosInstance.post<void>("/missions", payload)
     } catch (error) {
         throw error;
     }

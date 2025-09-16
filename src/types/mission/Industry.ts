@@ -1,0 +1,18 @@
+export enum Industry {
+    BANQUE_ASSURANCE_FINTECH = "Banque, Assurance & FinTech",
+    SANTE_PHARMA_BIOTECH = "Santé, Pharma & Biotech",
+    AGROALIMENTAIRE_AGRICULTURE = "Agroalimentaire & Agriculture",
+    ENERGIE_ENVIRONNEMENT_GREENTECH = "Énergie, Environnement & Greentech",
+    TRANSPORT_LOGISTIQUE_MOBILITE = "Transport, Logistique & Mobilité",
+    AUTOMOBILE_AERONAUTIQUE_SPATIAL = "Automobile, Aéronautique & Spatial",
+    INDUSTRIE_MANUFACTURING = "Industrie & Manufacturing",
+    BTP_CONSTRUCTION = "BTP & Construction",
+    TELECOMS_RESEAUX = "Télécoms & Réseaux",
+    ECOMMERCE_RETAIL_LUXE = "E-commerce, Retail & Luxe",
+    MEDIAS_DIVERTISSEMENT_JEUX_VIDEO = "Médias, Divertissement & Jeux vidéo",
+    EDUCATION_FORMATION = "Éducation & Formation",
+    SECTEUR_PUBLIC_ADMINISTRATION = "Secteur Public & Administration",
+    ONG_ECONOMIE_SOCIALE = "ONG & Économie sociale",
+    TOURISME_HOTELLERIE_RESTAURATION = "Tourisme, Hôtellerie & Restauration",
+    CONSEIL_AUDIT_STARTUPS = "Conseil, Audit & Startups",
+}
