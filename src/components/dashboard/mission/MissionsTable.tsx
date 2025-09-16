@@ -15,6 +15,7 @@ import {useDebounce} from "@/hooks/useDebounce";
 import UpdateMissionStatusDialog from "@/components/dashboard/mission/UpdateMissionStatusDialog";
 import {Mission} from "@/types/mission/Mission";
 import DeleteMissionAlertDialog from "@/components/dashboard/mission/DeleteMissionAlertDialog";
+import {useRouter} from "next/navigation";
 
 const DashboardContentMissionsTable = () => {
 
@@ -25,6 +26,7 @@ const DashboardContentMissionsTable = () => {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false);
 
 
+    const router = useRouter();
     // Debounce search input to avoid too many requests
     const debouncedSearch = useDebounce(search, 500)
 
@@ -114,6 +116,7 @@ const DashboardContentMissionsTable = () => {
                                                     className={`h-[4.5rem] cursor-pointer ${
                                                         index < missions.data.length - 1 ? "!border-b border-b-[#EAECF0]" : ""
                                                     }`}
+                                                    onClick={() => router.push(`/dashboard/mission/${mission.id}/applications`)}
                                                 >
                                                     <TableCell
                                                         className="font-medium text-[#101828] text-sm">
