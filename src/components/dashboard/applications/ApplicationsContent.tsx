@@ -27,7 +27,9 @@ const ApplicationsContent = ({id}: ApplicationsContentProps) => {
 
     if (isError || !data) {
         return (
-            <ErrorBox message="Failed to load applications. Please try again later."/>
+            <ErrorBox
+                message="Une erreur est survenue lors du chargement des candidatures."
+            />
         )
     }
 
