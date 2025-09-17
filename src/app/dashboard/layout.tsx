@@ -30,7 +30,7 @@ const DashboardLayout = ({children}: DashboardLayoutProps) => {
                         <Sidebar/>
                     </div>
                     <main className="min-h-screen overflow-y-auto w-full scroll-hidden pt-3">
-                        <div className="p-8 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
+                        <div className="pb-20 md:pb-8 pt-8 px-8 rounded-t-[2.5rem] border-t border-x border-[#EAECF0]">
                             {children}
                         </div>
                     </main>

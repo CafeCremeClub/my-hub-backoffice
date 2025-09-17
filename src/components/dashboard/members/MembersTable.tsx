@@ -20,9 +20,6 @@ const MembersTable = () => {
         page
     });
 
-    console.log(members);
-
-
     const handlePageChange = (newPage: number) => {
         setPage(newPage);
     }
