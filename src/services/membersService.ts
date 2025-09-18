@@ -10,6 +10,8 @@ export const getAllMembers = async (params?: GetMembersParams): Promise<GetMembe
 
         if (params?.page) queryParams.append('page', params.page.toString());
         if (params?.perPage) queryParams.append('perPage', params.perPage.toString());
+        if (params?.orderBy) queryParams.append('orderBy', params.orderBy.toString());
+        if (params?.direction) queryParams.append('direction', params.direction.toString());
 
         const url = `/profiles/admin${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
 

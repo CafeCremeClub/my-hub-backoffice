@@ -17,7 +17,8 @@ import {
     Award,
     Building
 } from "lucide-react";
-import {FaLinkedin, FaWhatsapp} from "react-icons/fa6";
+import {FaCaretLeft, FaLinkedin, FaWhatsapp} from "react-icons/fa6";
+import {useRouter} from "next/navigation";
 
 interface MemberDetailsContentProps {
     id: string;
@@ -25,6 +26,7 @@ interface MemberDetailsContentProps {
 
 const MemberDetailsContent = ({id}: MemberDetailsContentProps) => {
 
+    const router = useRouter();
     const {isPending, isError, data} = useGetMemberById(id);
 
     if (isPending) {
@@ -43,6 +45,15 @@ const MemberDetailsContent = ({id}: MemberDetailsContentProps) => {
 
     return (
         <div className="flex flex-col gap-8 w-full h-full">
+            <CustomButton
+                type="button"
+                iconPosition="left"
+                icon={<FaCaretLeft className="flex-none"/>}
+                className="!ring-0 bricolage-grotesque tracking-tighter font-bold w-max text-[#344054] bg-white hover:bg-gray-50 border border-[#D0D5DD]"
+                onClick={() => router.back()}
+            >
+                Retour aux membres
+            </CustomButton>
             {/* Header Section */}
             <div className="flex lg:flex-row flex-col lg:justify-between gap-6">
                 <div className="flex flex-col gap-2">

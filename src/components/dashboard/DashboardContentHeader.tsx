@@ -35,7 +35,7 @@ const DashboardContentHeader = () => {
                     icon={<Plus className="flex-none size-4"/>}
                     onClick={() => setIsAddNewOfferDialogOpen(true)}
                 >
-                    Ajouter une nouvelle offre
+                    Créer une nouvelle offre
                 </CustomButton>
             </div>
         </>

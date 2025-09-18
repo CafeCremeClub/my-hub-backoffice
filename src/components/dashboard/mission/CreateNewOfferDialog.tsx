@@ -174,9 +174,26 @@ const CreateNewOfferDialog = ({isOpen, onClose}: CreateNewOfferDialogProps) => {
                             <CustomInput
                                 name="tjm"
                                 type="number"
+                                min={1}
                                 placeholder="Taux journalier moyen"
                                 value={formik.values.tjm || ''}
-                                onChange={formik.handleChange}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+
+                                    // allow empty input so user can delete
+                                    if (value === '') {
+                                        formik.setFieldValue('tjm', '');
+                                        return;
+                                    }
+
+                                    // parse the value as integer
+                                    const intValue = parseInt(value, 10);
+
+                                    // ignore negative numbers
+                                    if (intValue < 0) return;
+
+                                    formik.setFieldValue('tjm', isNaN(intValue) ? 0 : intValue);
+                                }}
                                 onBlur={formik.handleBlur}
                                 isError={formik.touched.tjm && !!formik.errors.tjm}
                             />
