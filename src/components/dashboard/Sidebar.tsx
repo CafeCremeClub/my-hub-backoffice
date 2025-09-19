@@ -5,7 +5,7 @@ import Image from "next/image";
 import {lightBlueLogo} from "../../../public";
 import {Button} from "@/components/ui/button";
 import HouseIcon from "@/components/icons/HouseIcon";
-import {LogOut} from "lucide-react";
+import {ListTodo, LogOut} from "lucide-react";
 import {TbUsers} from "react-icons/tb";
 import {usePathname, useRouter} from "next/navigation";
 import useGetMe from "@/hooks/auth/useGetMe";
@@ -24,6 +24,12 @@ const routes = [
         name: "Membres",
         icon: TbUsers,
         route: "/dashboard/members",
+    },
+    {
+        id: 3,
+        name: "Utilisateurs autorisés",
+        icon: ListTodo,
+        route: "/dashboard/whitelist",
     }
 ]
 
@@ -50,12 +56,7 @@ const Sidebar = ({
 
     const [selectedRoute, setSelectedRoute] = useState<string>(routes[0].route);
 
-    const onRoutePress = (name: string, id?: number) => {
-        if (id && id === 3) {
-            window.open("https://www.cafe-creme.club/nouvelle-communaute", "_blank");
-            return;
-        }
-
+    const onRoutePress = (name: string) => {
         setSelectedRoute(name)
         router.push(name);
 
@@ -115,7 +116,7 @@ const Sidebar = ({
                                             ? "bg-[#697194]"
                                             : "bg-transparent"
                                     }`}
-                                    onClick={() => onRoutePress(route.route, route.id)}
+                                    onClick={() => onRoutePress(route.route)}
                                     aria-label={route.name}
                                 >
                                     {<route.icon width={16} height={16} stroke="#BCD8FF" className="shrink-0"/>}
