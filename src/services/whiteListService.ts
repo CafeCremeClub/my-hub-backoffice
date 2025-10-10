@@ -1,5 +1,6 @@
 import { GetWhiteListParams } from '@/types/white-list/GetWhiteListParams';
 import { GetWhiteListResponse } from '@/types/white-list/GetWhiteListResponse';
+import { BatchImportWhiteListRequest } from '@/types/white-list/BatchImportWhiteListRequest';
 import axiosInstance from '@/config/axiosInstance';
 
 export const getWhiteList = async (
@@ -29,6 +30,17 @@ export const addUserToWhiteList = async (email: string): Promise<void> => {
     await axiosInstance.post<void>('/whitelists', {
       email: email,
     });
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const batchImportWhiteList = async (emails: string[]): Promise<void> => {
+  try {
+    const payload: BatchImportWhiteListRequest = {
+      emails,
+    };
+    await axiosInstance.post<void>('/whitelists/batch', payload);
   } catch (error) {
     throw error;
   }

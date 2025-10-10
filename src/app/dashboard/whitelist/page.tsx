@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import CustomButton from '@/components/custom/CustomButton';
-import { Plus } from 'lucide-react';
+import { Plus, Upload } from 'lucide-react';
 import AddUserToWhiteListDialog from '@/components/dashboard/white-list/AddUserToWhiteListDialog';
+import ImportWhiteListCSVDialog from '@/components/dashboard/white-list/ImportWhiteListCSVDialog';
 import useGetWhiteList from '@/hooks/white-list/useGetWhiteList';
 import LoadingBox from '@/components/dashboard/LoadingBox';
 import ErrorBox from '@/components/dashboard/ErrorBox';
@@ -21,6 +22,8 @@ import WhiteListTablePaginationControls from '@/components/dashboard/white-list/
 const WhiteListPage = () => {
   const [page, setPage] = useState<number>(1);
   const [isAddUserDialogOpen, setIsAddUserDialogOpen] =
+    useState<boolean>(false);
+  const [isImportCSVDialogOpen, setIsImportCSVDialogOpen] =
     useState<boolean>(false);
 
   const { isPending, isError, data } = useGetWhiteList({
@@ -47,6 +50,10 @@ const WhiteListPage = () => {
         isOpen={isAddUserDialogOpen}
         onClose={() => setIsAddUserDialogOpen(false)}
       />
+      <ImportWhiteListCSVDialog
+        isOpen={isImportCSVDialogOpen}
+        onClose={() => setIsImportCSVDialogOpen(false)}
+      />
       <div className="flex flex-col gap-8 w-full h-full">
         <div className="flex lg:flex-row flex-col lg:justify-between gap-3">
           <div className="flex flex-col gap-1">
@@ -54,12 +61,21 @@ const WhiteListPage = () => {
               Liste des utilisateurs autorisés
             </div>
           </div>
-          <CustomButton
-            icon={<Plus className="flex-none size-4" />}
-            onClick={() => setIsAddUserDialogOpen(true)}
-          >
-            Ajouter un utilisateur
-          </CustomButton>
+          <div className="flex gap-3">
+            <CustomButton
+              icon={<Upload className="flex-none size-4" />}
+              onClick={() => setIsImportCSVDialogOpen(true)}
+              className="!ring-0 bricolage-grotesque tracking-tighter font-bold text-[#344054] bg-white hover:bg-gray-50 border border-[#D0D5DD]"
+            >
+              Importer CSV
+            </CustomButton>
+            <CustomButton
+              icon={<Plus className="flex-none size-4" />}
+              onClick={() => setIsAddUserDialogOpen(true)}
+            >
+              Ajouter un utilisateur
+            </CustomButton>
+          </div>
         </div>
         {data.data && data.data.length > 0 ? (
           <Table>
