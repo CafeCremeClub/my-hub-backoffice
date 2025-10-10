@@ -1,3 +1,3 @@
 export interface SaveCookiesPayload {
-    token: string;
+  token: string;
 }

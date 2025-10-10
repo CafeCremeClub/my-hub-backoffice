@@ -1,4 +1,4 @@
 export enum GetMembersOrderBy {
-    NAME = 'name',
-    CREATED_AT = 'createdAt',
+  NAME = 'name',
+  CREATED_AT = 'createdAt',
 }
