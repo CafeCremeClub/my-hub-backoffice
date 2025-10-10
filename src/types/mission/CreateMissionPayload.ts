@@ -8,6 +8,7 @@ export interface CreateMissionPayload {
   industry: Industry[];
   skills: Skill[];
   link: string;
+  linkedIn?: string;
   whatsApp: string;
   companyBio: string;
 }

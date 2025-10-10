@@ -44,6 +44,9 @@ const validationSchema = Yup.object({
   link: Yup.string()
     .url('Le lien doit être une URL valide')
     .required('Le lien est requis'),
+  linkedIn: Yup.string()
+    .url('Le lien LinkedIn doit être une URL valide')
+    .optional(),
   whatsApp: Yup.string().required('Le numéro WhatsApp est requis'),
   companyBio: Yup.string().required("La bio de l'entreprise est requise"),
 });
@@ -65,6 +68,7 @@ const CreateNewOfferDialog = ({
       industry: [],
       skills: [],
       link: '',
+      linkedIn: '',
       whatsApp: '',
       companyBio: '',
     },
@@ -256,6 +260,25 @@ const CreateNewOfferDialog = ({
               />
               {formik.touched.link && formik.errors.link && (
                 <CustomErrorIndicator message={formik.errors.link} />
+              )}
+            </div>
+
+            {/* LinkedIn */}
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-[#344054]">
+                Lien LinkedIn
+              </label>
+              <CustomInput
+                name="linkedIn"
+                type="url"
+                placeholder="https://www.linkedin.com/in/username"
+                value={formik.values.linkedIn}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                isError={formik.touched.linkedIn && !!formik.errors.linkedIn}
+              />
+              {formik.touched.linkedIn && formik.errors.linkedIn && (
+                <CustomErrorIndicator message={formik.errors.linkedIn} />
               )}
             </div>
 

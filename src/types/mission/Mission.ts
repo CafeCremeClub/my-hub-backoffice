@@ -6,4 +6,5 @@ export interface Mission {
   client: string;
   status: MissionStatus;
   applications: number;
+  linkedIn?: string;
 }
