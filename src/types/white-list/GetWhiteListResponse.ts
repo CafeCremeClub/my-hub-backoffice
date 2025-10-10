@@ -1,8 +1,8 @@
 export interface GetWhiteListResponse {
-    page: number;
-    perPage: number;
-    total: number;
-    data: {
-        email: string;
-    }[];
+  page: number;
+  perPage: number;
+  total: number;
+  data: {
+    email: string;
+  }[];
 }

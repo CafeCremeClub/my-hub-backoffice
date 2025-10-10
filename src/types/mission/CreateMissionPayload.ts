@@ -1,14 +1,13 @@
-import {Industry} from "@/types/mission/Industry";
-import {Skill} from "@/types/mission/Skill";
-
+import { Industry } from '@/types/mission/Industry';
+import { Skill } from '@/types/mission/Skill';
 
 export interface CreateMissionPayload {
-    title: string;
-    client: string;
-    tjm: number;
-    industry: Industry[];
-    skills: Skill[];
-    link: string;
-    whatsApp: string;
-    companyBio: string;
+  title: string;
+  client: string;
+  tjm: number;
+  industry: Industry[];
+  skills: Skill[];
+  link: string;
+  whatsApp: string;
+  companyBio: string;
 }

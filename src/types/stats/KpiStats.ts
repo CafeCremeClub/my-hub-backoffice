@@ -1,5 +1,5 @@
 export interface KpiStats {
-    members: number;
-    missions: number;
-    activeMembers: number;
+  members: number;
+  missions: number;
+  activeMembers: number;
 }

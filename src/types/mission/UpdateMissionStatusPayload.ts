@@ -1,7 +1,6 @@
-import {MissionStatus} from "@/types/mission/MissionStatus";
-
+import { MissionStatus } from '@/types/mission/MissionStatus';
 
 export interface UpdateMissionStatusPayload {
-    id: string;
-    status: MissionStatus;
+  id: string;
+  status: MissionStatus;
 }
